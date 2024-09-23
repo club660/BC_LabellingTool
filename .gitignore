@@ -1,0 +1,11 @@
+cmake-build-debug/
+*.ima
+build/
+out/
+.vs/
+*.stl
+.idea/
+go/.idea/
+go/*.a
+go/*.h
+.clang-format
