@@ -30,7 +30,6 @@ MainWindow::MainWindow(QMainWindow* parent) :
 
     setCentralWidget(centralWidget);
     setWindowTitle(tr("Labelling Tool"));
-    
     LoadSettings();
 }
 
@@ -78,6 +77,18 @@ void MainWindow::closeEvent(QCloseEvent* event)
     }
     else {
         event->ignore();  // Ignore the close event and prevent the application from closing
+    }
+}
+
+void MainWindow::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_PageUp) {
+        // Simulate left button click when the left arrow is pressed
+        centralWidget->PreviousOnClick();
+    }
+    else if (event->key() == Qt::Key_PageDown) {
+        // Simulate right button click when the right arrow is pressed
+        centralWidget->NextOnClick();
     }
 }
 

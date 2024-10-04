@@ -1,1 +1,4 @@
-comment_text, Hypertension, Cholesterol, Type 1 diabetes, Type 2 diabetes, Active smoker, Ex - smoker, Family history, Atrial fibrillation, HFpEF, HFrEF, IHD, Non - obstructive coronary atherosclerosis
+comment_text,           Hypertension,           Cholesterol,           Type 1 diabetes,           Type 2 diabetes,           Active smoker,           Ex - smoker,           Family history,           Atrial fibrillation,           HFpEF,           HFrEF,           IHD,           Non - obstructive coronary atherosclerosis,         ,          w,         1,          w,         3
+test,1,1,1,1,0,0,1,1,1,0,0,0,1,0,0,1,0
+test,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+test,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

@@ -20,6 +20,7 @@ public:
 	MainViewWidget(QWidget* parent = 0);
 	~MainViewWidget();
 
+	void InitializeCBGroup();
 	void UpdateDisplay(int id);
 	bool ReadCSV(std::string filepath);
 	void SaveCSV();
@@ -31,10 +32,13 @@ public:
 	int GetCurrentIndex();
 	string GetFilePath();
 
+	void ClearLayout(QLayout* layout);
+
 public slots:
 	void NextOnClick();
 	void PreviousOnClick();
 	void SpinBoxValueSet(int val);
+
 
 private:
 	Labels* file;
@@ -43,6 +47,7 @@ private:
 	QLabel* pageNum;
 	QPlainTextEdit* display;
 	vector<QCheckBox*> cbGroup;
+	QVBoxLayout* labelLayout;
 
 	int index = 0;
 	bool autosave = true;

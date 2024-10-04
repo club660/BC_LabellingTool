@@ -16,6 +16,7 @@ bool Labels::ReadCSV(const string& filepath)
     }
     contents.clear();
     labels.clear();
+    attributes.clear();
     this->filepath = "";
 
     std::string line;
@@ -38,6 +39,9 @@ bool Labels::ReadCSV(const string& filepath)
 
         if (isFirstRow) {
             isFirstRow = false;  // Skip the first row (attribute names)
+            for (size_t i = 1; i < row.size(); ++i) {
+                attributes.push_back(row[i]);
+            }
             currentLine.clear();
             continue;
         }
@@ -77,7 +81,12 @@ void Labels::SaveCSV()
     }
 
     // first row
-    file<< "comment_text, Hypertension, Cholesterol, Type 1 diabetes, Type 2 diabetes, Active smoker, Ex - smoker, Family history, Atrial fibrillation, HFpEF, HFrEF, IHD, Non - obstructive coronary atherosclerosis" << std::endl;
+    file << "comment_text";
+    for (size_t i = 0; i < attributes.size(); i++)
+    {
+        file << ", " << attributes[i];
+    }
+    file << std::endl;
     // Write each row to the file
     for (size_t i = 0; i < contents.size(); ++i) {
         // Escape and quote the string if necessary
@@ -104,7 +113,13 @@ void Labels::SaveCSV(const string& filepath)
     }
 
     // first row
-    file << "comment_text, Hypertension, Cholesterol, Type 1 diabetes, Type 2 diabetes, Active smoker, Ex - smoker, Family history, Atrial fibrillation, HFpEF, HFrEF, IHD, Non - obstructive coronary atherosclerosis" << std::endl;
+    file << "comment_text";
+    for (size_t i = 0; i < attributes.size(); i++)
+    {
+        file << ", " << attributes[i];
+    }
+    file << std::endl;
+    //file << "comment_text, Hypertension, Cholesterol, Type 1 diabetes, Type 2 diabetes, Active smoker, Ex - smoker, Family history, Atrial fibrillation, HFpEF, HFrEF, IHD, Non - obstructive coronary atherosclerosis" << std::endl;
     // Write each row to the file
     for (size_t i = 0; i < contents.size(); ++i) {
         // Escape and quote the string if necessary
@@ -151,6 +166,11 @@ string Labels::GetLabel(int index, int iLabel)
 void Labels::SetLabel(int index, int iLabel, string newLabel)
 {
     labels[index].replace(iLabel, 1, newLabel);
+}
+
+vector<string> Labels::GetAttributes()
+{
+    return this->attributes;
 }
 
 int Labels::GetSize()

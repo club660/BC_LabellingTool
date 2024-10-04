@@ -24,6 +24,7 @@ public:
 	void SetLabels(int index, string newLabel);
 	string GetLabel(int index, int iLabel);
 	void SetLabel(int index, int iLabel, string newLabel);
+	vector<string> GetAttributes();
 	int GetSize();
 	string GetFilePath();
 
@@ -34,6 +35,7 @@ private:
 	string EscapeAndQuoteCSVField(const string& field);
 private:
 	string filepath = "";
+	vector<string> attributes;
 	vector<string> contents;
 	vector<string> labels;
 };
